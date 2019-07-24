@@ -37,28 +37,25 @@ class ViewController: UIViewController {
     
     
     @IBAction func buttonPressed(_ sender: UIButton) {
-        if  redlightIsOn == false && yellowLightisOn == false && greenLightIsOn == false {
+        if redlightIsOn == true {
+            yellowLight.alpha = 1
+            redLight.alpha = 0.3
+            redlightIsOn = false
+            yellowLightisOn = true
+        } else if yellowLightisOn == true {
+            greenLight.alpha = 1
+            greenLightIsOn = true
+            yellowLight.alpha = 0.3
+            yellowLightisOn = false
+        } else if greenLightIsOn == true {
             redLight.alpha = 1
             redlightIsOn = true
-            startButton.setTitle("NEXT", for: .normal)
+            greenLight.alpha = 0.3
+            greenLightIsOn = false
         } else {
-            if redlightIsOn == true {
-                yellowLight.alpha = 1
-                redLight.alpha = 0.3
-                redlightIsOn = false
-                yellowLightisOn = true
-            } else if yellowLightisOn == true {
-                greenLight.alpha = 1
-                greenLightIsOn = true
-                yellowLight.alpha = 0.3
-                yellowLightisOn = false
-            } else if greenLightIsOn == true {
                 redLight.alpha = 1
                 redlightIsOn = true
-                greenLight.alpha = 0.3
-                greenLightIsOn = false
+                startButton.setTitle("NEXT", for: .normal)
             }
         }
     }
-}
-
